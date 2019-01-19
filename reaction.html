@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Reaction Timer</title>
+	<style type="text/css">
+		body{
+			margin: 0;
+			padding: 0;
+		}
+		h1{
+			font-size:300%;
+		}
+		#click{
+			font-size: 150%;
+		}
+		#time{
+			font-weight: bold;
+			font-size: 150%;
+		}
+	</style>
+</head>
+<body>
+	<div id="text">
+		<h1>Test Your Reactions!</h1>
+		<p id="click">Click on the boxes and circles as quickly as you can!</p>
+		<p id="time">Your Time: <span id="timeTaken"></span></p>
+	</div>
+	<div id="csq"></div>
+
+
+	 	<script type="text/javascript">
+	 		function getRandomColor() {
+				  var letters = '0123456789ABCDEF';
+				  var color = '#';
+				  for (var i = 0; i < 6; i++) {
+				    color += letters[Math.floor(Math.random() * 16)];
+				  }
+				  return color;
+				}
+
+
+			function shape()
+			{
+
+				var colour=getRandomColor();
+				var width =100 + Math.floor(Math.random() * 300) + "px";
+				var height = width;
+				var cs= Math.floor(Math.random() * 2);
+				var left= Math.floor(Math.random() * 800 ) + "px";
+				var top= 50+Math.floor(Math.random() * 300 ) +"px";
+
+			 	
+			 	if(cs==0)
+				 {
+				 	document.getElementById("csq").style.borderRadius="50%";
+				 	
+				 }
+				 else
+				 {
+				 	document.getElementById("csq").style.borderRadius=0;
+				 }
+
+				document.getElementById("csq").style.width= width;
+			 	document.getElementById("csq").style.height= height;
+			 	document.getElementById("csq").style.backgroundColor= colour;
+			 	document.getElementById("csq").style.position= "relative";
+			 	document.getElementById("csq").style.left= left;
+			 	document.getElementById("csq").style.top= top;
+			 	//document.getElementById("csq").style.display="block";
+
+
+			 		startTime = new Date().getTime();
+			 	
+			 }
+
+
+			 function appear()
+			 {
+			 	setTimeout(shape,Math.random()*2000);
+			 }
+
+			 appear();
+
+ 				document.getElementById("csq").onclick =function()
+ 				{
+ 					//document.getElementById("csq").style.display="none";
+ 					var endTime= new Date().getTime();
+ 					var timeTaken = (endTime-startTime)/1000;
+ 					document.getElementById("timeTaken").innerHTML = timeTaken + "s";
+ 					appear();
+ 				}
+			
+			 
+			 
+
+	 	</script>
+</body>
+</html>
